@@ -14,23 +14,55 @@ public class Login {
 	static Scanner scanner = new Scanner(System.in);
 	static Acct_Owner acct_owner;
 
+
 	
 	public static void main(String[] args) {
 		int acct_owner_id;
+		boolean inSession = true;
 		List<Account> acct_list;
+		while(acct_owner == null) {// keep running unitl acct_owner is assigned
 		acct_owner = RegisteredLogin(); //returns an account owner object
+		}
 		acct_owner_id = acct_owner.getAcct_Owner_id();
-		System.out.println(acct_owner_id);
 		AccountDAOImpl adi = new AccountDAOImpl();
-		acct_list = adi.getAccounts(acct_owner_id);
-		for (Account ac : acct_list)
-			System.out.println(ac.getAcct_bal());
-		
+	
 		Acct_OwnerDAOImpl oi = new Acct_OwnerDAOImpl();
-		oi.createAccount(acct_owner_id);
-		oi.deleteAccount(acct_owner_id);
-		oi.deposit(acct_owner_id);
-		oi.withdraw(acct_owner_id);
+		
+		int selection;
+		
+		while(inSession == true) {
+			System.out.println("Please select and option:");
+			System.out.println("1. View your accounts and balances");
+			System.out.println("2. Create an account");
+			System.out.println("3. Delete an account");
+			System.out.println("4. Make a deposit");
+			System.out.println("5. Make a withdrawl ");
+			System.out.println("6. Exit the System");
+			
+			selection = scanner.nextInt();
+			if(selection == 1) {
+				acct_list = adi.getAccounts(acct_owner_id);
+				for (Account ac : acct_list) {
+					System.out.println(ac.getAcct_id() +"  $"+ ac.getAcct_bal());
+				
+				}
+			}
+			else if(selection == 2)
+				oi.createAccount(acct_owner_id);
+			else if(selection == 3)
+				oi.deleteAccount(acct_owner_id);
+			else if(selection == 4)
+				oi.deposit(acct_owner_id);
+			else if (selection == 5)
+				oi.withdraw(acct_owner_id);
+			else if (selection == 6) {
+				inSession = false;
+				System.out.println("Thanks for banking with us!");
+			
+			}
+		
+		}
+	
 	}
 
 	//Method for registered users to input their login creds.
@@ -45,9 +77,10 @@ public class Login {
 		Acct_OwnerDAOImpl ac = new Acct_OwnerDAOImpl();
 		
 			owner = ac.login(username, password);
-			System.out.println(owner.toString());
+			//System.out.println(owner.toString());
 		
 		return owner;
+		
 	}
 	
 }

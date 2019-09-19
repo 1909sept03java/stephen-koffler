@@ -44,19 +44,19 @@ public class Acct_OwnerDAOImpl implements Acct_OwnerDAO {
 					
 				}
 				else {
-					throw new InvalidInputException("Invalid password");
+					System.out.println("Invalid password");
+					return null;
 				}
 			}
 			else{
-				throw new InvalidInputException("Invalid username");
+				System.out.println("Invalid username");
+				return null;
 			}
 				
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
-		} catch (InvalidInputException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
 		}
 		
 		return owner;
@@ -120,6 +120,13 @@ public class Acct_OwnerDAOImpl implements Acct_OwnerDAO {
 			pstmt1.setDouble(1, newBalance);
 			pstmt1.setInt(2, acct_nmbr1);
 			pstmt1.executeUpdate();
+			
+			System.out.println("Would you like to make another deposit? Enter 1 for yes or 2 for no");
+			
+			
+			
+			
+			
 				} catch (SQLException e) {
 					
 					e.printStackTrace();
@@ -136,8 +143,7 @@ public class Acct_OwnerDAOImpl implements Acct_OwnerDAO {
 		
 		System.out.println("Enter the account number for the withdrawl ");
 		acct_nmbr1 = scanner.nextInt();
-		System.out.println("Enter the amount of the withdrawl");
-		withdrawlAmt = scanner.nextDouble();	
+			
 		try (Connection con = ConnectionUtil.getConnection()) {
 
 			String sql = "SELECT ACCT_BAL FROM ACCOUNT WHERE ACCT_NMBR = ?";
@@ -147,8 +153,11 @@ public class Acct_OwnerDAOImpl implements Acct_OwnerDAO {
 			rs.next();
 				if(rs.getDouble("ACCT_BAL") == 0) {
 					System.out.println("This account has zero balance");
+					return;
 				}
-				else if((rs.getDouble("ACCT_BAL") - withdrawlAmt) < 0) {
+				System.out.println("Enter the amount of the withdrawl");
+				withdrawlAmt = scanner.nextDouble();
+				if((rs.getDouble("ACCT_BAL") - withdrawlAmt) < 0) {
 					System.out.println("The withdrawl amount is greater than the account balance.");
 				}
 				else {
