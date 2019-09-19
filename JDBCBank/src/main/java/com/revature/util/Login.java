@@ -20,11 +20,16 @@ public class Login {
 		List<Account> acct_list;
 		acct_owner = RegisteredLogin(); //returns an account owner object
 		acct_owner_id = acct_owner.getAcct_Owner_id();
+		System.out.println(acct_owner_id);
 		AccountDAOImpl adi = new AccountDAOImpl();
 		acct_list = adi.getAccounts(acct_owner_id);
 		for (Account ac : acct_list)
 			System.out.println(ac.getAcct_bal());
 		
+		Acct_OwnerDAOImpl oi = new Acct_OwnerDAOImpl();
+		oi.createAccount(acct_owner_id);
+		oi.deleteAccount(acct_owner_id);
+		oi.deposit(acct_owner_id);
 	}
 
 	//Method for registered users to input their login creds.

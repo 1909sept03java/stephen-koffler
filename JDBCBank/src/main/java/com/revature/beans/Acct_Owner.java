@@ -4,7 +4,6 @@ public class Acct_Owner {
 	private int acct_Owner_id;
 	private String acct_Owner_Fname;
 	private String acct_Owner_Lname;
-	private int admin_id;
 	private int registered;
 	private String password;
 	private String user_name;
@@ -13,13 +12,12 @@ public class Acct_Owner {
 		super();
 	}
 
-	public Acct_Owner(int acct_Owner_id, String acct_Owner_Fname, String acct_Owner_Lname, int admin_id, int registered,
+	public Acct_Owner(int acct_Owner_id, String acct_Owner_Fname, String acct_Owner_Lname,  int registered,
 			String password, String user_name) {
 		super();
 		this.acct_Owner_id = acct_Owner_id;
 		this.acct_Owner_Fname = acct_Owner_Fname;
 		this.acct_Owner_Lname = acct_Owner_Lname;
-		this.admin_id = admin_id;
 		this.registered = registered;
 		this.password = password;
 		this.user_name = user_name;
@@ -49,13 +47,7 @@ public class Acct_Owner {
 		this.acct_Owner_Lname = acct_Owner_Lname;
 	}
 
-	public int getAdmin_id() {
-		return admin_id;
-	}
-
-	public void setAdmin_id(int admin_id) {
-		this.admin_id = admin_id;
-	}
+	
 
 	public int getRegistered() {
 		return registered;
@@ -84,7 +76,7 @@ public class Acct_Owner {
 	@Override
 	public String toString() {
 		return "Acct_Owner [acct_Owner_id=" + acct_Owner_id + ", acct_Owner_Fname=" + acct_Owner_Fname
-				+ ", acct_Owner_Lname=" + acct_Owner_Lname + ", admin_id=" + admin_id + ", registered=" + registered
+				+ ", acct_Owner_Lname=" + acct_Owner_Lname + ",   registered=" + registered
 				+ ", password=" + password + ", user_name=" + user_name + "]";
 	}
 
