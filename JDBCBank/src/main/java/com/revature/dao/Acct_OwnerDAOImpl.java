@@ -145,12 +145,20 @@ public class Acct_OwnerDAOImpl implements Acct_OwnerDAO {
 			pstmt.setInt(1, acct_nmbr1);
 			ResultSet rs = pstmt.executeQuery();
 			rs.next();
+				if(rs.getDouble("ACCT_BAL") == 0) {
+					System.out.println("This account has zero balance");
+				}
+				else if((rs.getDouble("ACCT_BAL") - withdrawlAmt) < 0) {
+					System.out.println("The withdrawl amount is greater than the account balance.");
+				}
+				else {
 			double newBalance  =  rs.getDouble("ACCT_BAL") - withdrawlAmt;
 			sql = "UPDATE ACCOUNT SET ACCT_BAL = ? WHERE ACCT_NMBR = ?";
 			PreparedStatement pstmt1 = con.prepareStatement(sql);
 			pstmt1.setDouble(1, newBalance);
 			pstmt1.setInt(2, acct_nmbr1);
 			pstmt1.executeUpdate();
+				}
 				} catch (SQLException e) {
 					
 					e.printStackTrace();
