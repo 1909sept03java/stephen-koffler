@@ -30,6 +30,7 @@ public class Login {
 		oi.createAccount(acct_owner_id);
 		oi.deleteAccount(acct_owner_id);
 		oi.deposit(acct_owner_id);
+		oi.withdraw(acct_owner_id);
 	}
 
 	//Method for registered users to input their login creds.

@@ -101,22 +101,56 @@ public class Acct_OwnerDAOImpl implements Acct_OwnerDAO {
 	public void deposit(int acct_owner_id) {
 		Scanner scanner = new Scanner(System.in);
 		int acct_nmbr1;
-		double amt;
-		double oldBalance;
-		double newBalance;
+		double depositAmt;
+		
 		System.out.println("Enter the account number for the deposit ");
 		acct_nmbr1 = scanner.nextInt();
 		System.out.println("Enter the amount of the deposit");
-		amt = scanner.nextDouble();	
+		depositAmt = scanner.nextDouble();	
 		try (Connection con = ConnectionUtil.getConnection()) {
 
 			String sql = "SELECT ACCT_BAL FROM ACCOUNT WHERE ACCT_NMBR = ?";
 			PreparedStatement pstmt = con.prepareStatement(sql);
 			pstmt.setInt(1, acct_nmbr1);
-			pstmt.execute();
 			ResultSet rs = pstmt.executeQuery();
-			newBalance  =  rs.getDouble("ACCT_BAL");
-			
+			rs.next();
+			double newBalance  =  rs.getDouble("ACCT_BAL") + depositAmt;
+			sql = "UPDATE ACCOUNT SET ACCT_BAL = ? WHERE ACCT_NMBR = ?";
+			PreparedStatement pstmt1 = con.prepareStatement(sql);
+			pstmt1.setDouble(1, newBalance);
+			pstmt1.setInt(2, acct_nmbr1);
+			pstmt1.executeUpdate();
+				} catch (SQLException e) {
+					
+					e.printStackTrace();
+				}	
+		
+		
+	}
+
+	@Override
+	public void withdraw(int acct_owner_id) {
+		Scanner scanner = new Scanner(System.in);
+		int acct_nmbr1;
+		double withdrawlAmt;
+		
+		System.out.println("Enter the account number for the withdrawl ");
+		acct_nmbr1 = scanner.nextInt();
+		System.out.println("Enter the amount of the withdrawl");
+		withdrawlAmt = scanner.nextDouble();	
+		try (Connection con = ConnectionUtil.getConnection()) {
+
+			String sql = "SELECT ACCT_BAL FROM ACCOUNT WHERE ACCT_NMBR = ?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, acct_nmbr1);
+			ResultSet rs = pstmt.executeQuery();
+			rs.next();
+			double newBalance  =  rs.getDouble("ACCT_BAL") - withdrawlAmt;
+			sql = "UPDATE ACCOUNT SET ACCT_BAL = ? WHERE ACCT_NMBR = ?";
+			PreparedStatement pstmt1 = con.prepareStatement(sql);
+			pstmt1.setDouble(1, newBalance);
+			pstmt1.setInt(2, acct_nmbr1);
+			pstmt1.executeUpdate();
 				} catch (SQLException e) {
 					
 					e.printStackTrace();

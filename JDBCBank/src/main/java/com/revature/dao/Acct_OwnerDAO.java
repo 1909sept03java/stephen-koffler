@@ -8,5 +8,6 @@ public interface Acct_OwnerDAO {
 	public void createAccount(int acct_owner_id);
 	public void deleteAccount(int acct_owner_id);
 	public void deposit(int acct_owner_id);
+	public void withdraw(int acct_owner_id);
 
 }
