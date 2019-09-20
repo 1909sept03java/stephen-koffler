@@ -31,7 +31,7 @@ public class Login {
 		int selection;
 		
 		while(inSession == true) {
-			System.out.println("Please select and option:");
+			System.out.println("Please select an option:");
 			System.out.println("1. View your accounts and balances");
 			System.out.println("2. Create an account");
 			System.out.println("3. Delete an account");
@@ -67,17 +67,17 @@ public class Login {
 
 	//Method for registered users to input their login creds.
 	public static Acct_Owner RegisteredLogin() {
-		Acct_Owner owner;
+		Acct_Owner owner;//create object of type Acct_Owner
 		String username;
 		String password;
 		System.out.println("Please enter your user name: ");
 		username = scanner.nextLine();
 		System.out.println("Please enter your password: ");
 		password = scanner.nextLine();
-		Acct_OwnerDAOImpl ac = new Acct_OwnerDAOImpl();
+		Acct_OwnerDAOImpl ac = new Acct_OwnerDAOImpl();// create object of type Acct_OwnerDAOImpl
 		
 			owner = ac.login(username, password);
-			//System.out.println(owner.toString());
+			
 		
 		return owner;
 		

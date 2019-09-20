@@ -121,7 +121,7 @@ public class Acct_OwnerDAOImpl implements Acct_OwnerDAO {
 			pstmt1.setInt(2, acct_nmbr1);
 			pstmt1.executeUpdate();
 			
-			System.out.println("Would you like to make another deposit? Enter 1 for yes or 2 for no");
+			//System.out.println("Would you like to make another deposit? Enter 1 for yes or 2 for no");
 			
 			
 			
