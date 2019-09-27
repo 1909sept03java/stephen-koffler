@@ -1,7 +1,7 @@
 package com.revature.beans;
 
 public class Employee {
-	private int ee_id;
+	private int userId;
 	private String fname;
 	private String lname;
 	private String addr_1;
@@ -13,9 +13,9 @@ public class Employee {
 	}
 
 
-	public Employee(int ee_id, String fname, String lname, String addr_1, String addr_2) {
+	public Employee(int userId, String fname, String lname, String addr_1, String addr_2) {
 		super();
-		this.ee_id = ee_id;
+		this.userId = userId;
 		this.fname = fname;
 		this.lname = lname;
 		this.addr_1 = addr_1;
@@ -23,13 +23,13 @@ public class Employee {
 	}
 
 
-	public int getEe_id() {
-		return ee_id;
+	public int getUserid() {
+		return userId;
 	}
 
 
-	public void setEe_id(int ee_id) {
-		this.ee_id = ee_id;
+	public void setUserid(int userid) {
+		this.userId = userid;
 	}
 
 

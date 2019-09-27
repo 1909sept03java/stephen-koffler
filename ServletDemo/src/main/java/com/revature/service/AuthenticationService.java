@@ -1,4 +1,10 @@
 package com.revature.service;
+import com.revature.util.ConnectionUtil;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import com.revature.beans.Credentials;
 import com.revature.beans.User;
@@ -9,11 +15,33 @@ public class AuthenticationService {
 	// if they are, return user associated with them
 	public User authenticateUser(Credentials creds) {
 		User u = null;
-		if (creds.getUsername().equals("merlin") && creds.getPassword().equals("cat")) {
-			u = new User(6, "Merlin", "Higgins");
+		try (Connection con = ConnectionUtil.getConnection()) {
+			String sql = "SELECT USERID FROM EMPLOYEE WHERE USERNAME = ?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, creds.getUsername());
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()) {
+				sql = "SELECT * FROM EMPLOYEE WHERE PASSWORD = ? AND USERNAME = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, creds.getPassword());
+				pstmt.setString(2, creds.getUsername());
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					int userId = rs.getInt("USERID");
+					String fname = rs.getString("FNAME");
+					String lname = rs.getString("LNAME");
+					u = new User(userId, fname, lname);
+				}
+			}
+			
+		}catch (SQLException e) {
+			
+			e.printStackTrace();
+		
 		}
 		return u;
 	}
+}
+	
 
-}//here is where we can access acctwonerdaoimpl
-//remove the if block and amke the call to ac.login-++++++++++-
+	

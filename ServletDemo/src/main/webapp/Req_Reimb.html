@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Reimbursement Request</title>
+    <!--link rel="stylesheet" href="styles.css"-->
+</head>
+
+<body>
+    <div class="display">
+        <!-- action attribute is the form handler -->
+        <!-- method attribute is the HTTP method to be used -->
+        <form action="input_RR" method="POST">
+            <fieldset>
+                <legend>Amount:</legend>
+                <input required autocomplete="off" type="text" name="amount" />
+            </fieldset>
+            <fieldset>
+                <legend>Description:</legend>
+                <input required autocomplete="off" type="text" name="description" />
+            </fieldset>
+            <br>
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+
+</body>

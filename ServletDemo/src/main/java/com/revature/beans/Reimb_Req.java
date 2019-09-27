@@ -2,7 +2,7 @@ package com.revature.beans;
 
 public class Reimb_Req {
 	private int reimb_id;
-	private int ee_id;
+	private int userId;
 	private String description;
 	private double dollar_amt;
 	private boolean resolved;
@@ -13,10 +13,10 @@ public class Reimb_Req {
 	}
 
 
-	public Reimb_Req(int reimb_id, int ee_id, String description, double dollar_amt, boolean resolved) {
+	public Reimb_Req(int reimb_id, int userId, String description, double dollar_amt, boolean resolved) {
 		super();
 		this.reimb_id = reimb_id;
-		this.ee_id = ee_id;
+		this.userId = userId;
 		this.description = description;
 		this.dollar_amt = dollar_amt;
 		this.resolved = resolved;
@@ -33,13 +33,13 @@ public class Reimb_Req {
 	}
 
 
-	public int getEe_id() {
-		return ee_id;
+	public int getUserId() {
+		return userId;
 	}
 
 
-	public void setEe_id(int ee_id) {
-		this.ee_id = ee_id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 
