@@ -1,25 +1,32 @@
 package com.revature.beans;
 
+import java.util.Date;
+
 public class Reimb_Req {
 	private int reimb_id;
 	private int userId;
 	private String description;
 	private double dollar_amt;
-	private boolean resolved;
+	private Date openDate;
+	private Date approvedDate;
+	private int status;
 
 
 	public Reimb_Req() {
-		super();
+		super();	
 	}
 
 
-	public Reimb_Req(int reimb_id, int userId, String description, double dollar_amt, boolean resolved) {
+	public Reimb_Req(int reimb_id, int userId, String description, double dollar_amt, Date openDate, Date approvedDate,
+			int status) {
 		super();
 		this.reimb_id = reimb_id;
 		this.userId = userId;
 		this.description = description;
 		this.dollar_amt = dollar_amt;
-		this.resolved = resolved;
+		this.openDate = openDate;
+		this.approvedDate = approvedDate;
+		this.status = status;
 	}
 
 
@@ -63,14 +70,40 @@ public class Reimb_Req {
 	}
 
 
-	public boolean isResolved() {
-		return resolved;
+	public Date getOpenDate() {
+		return openDate;
 	}
 
 
-	public void setResolved(boolean resolved) {
-		this.resolved = resolved;
+	public void setOpenDate(Date openDate) {
+		this.openDate = openDate;
 	}
-	
-	
+
+
+	public Date getApprovedDate() {
+		return approvedDate;
+	}
+
+
+	public void setApprovedDate(Date approvedDate) {
+		this.approvedDate = approvedDate;
+	}
+
+
+	public int getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+
 }
+
+
+	
+
+
+	
