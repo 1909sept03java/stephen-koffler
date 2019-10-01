@@ -39,4 +39,20 @@
   	<servlet-name>Req_ReimbServlet</servlet-name>
   	<url-pattern>/input_RR</url-pattern>
   </servlet-mapping>
-</web-app>
+<servlet>
+  	<servlet-name>GetRRServlet</servlet-name>
+  	<servlet-class>com.revature.servlet.GetRRServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>GetRRServlet</servlet-name>
+  	<url-pattern>/get_RRs</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>View_RR_StatusServlet</servlet-name>
+  	<servlet-class>com.revature.servlet.View_RR_StatusServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>View_RR_StatusServlet</servlet-name>
+  	<url-pattern>/view_RRs</url-pattern>
+  </servlet-mapping>
+  </web-app>
