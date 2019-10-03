@@ -1,13 +1,8 @@
 window.onload = function () {
-    document.getElementById("getidinfo").onclick = getUserInfoWithFetch;
+
     console.log("I'm here!");
 
-};
-let url = "http://localhost:8082/ServletDemo/session";
-
-
-
-function getUserInfoWithFetch() {
+    let url = "http://localhost:8082/ServletDemo/session";
     console.log("I'm here!");
     fetch(url, { method: "GET", headers: { "Accept": "application/json" } })
 
@@ -24,6 +19,15 @@ function getUserInfoWithFetch() {
         .then((data) => {
             console.log(data);
             //            //var userinfo = data.results;
+            if (data.isManager == 1) {
+                document.getElementById("mgrstatus").innerText = "Manager's HomePage";
+                var li = document.createElement("li");
+                li.innerHTML = <a href='Review_Staff_RRs'>Review, Approve, or Deny Expense Reports of your Staff    </a>
+                document.getElementById("viewstatus").append(li);
+            }
+            else
+                document.getElementById("mgrstatus").innerText = "Employee's HomePage";
+
             document.getElementById("id").innerText = data.id;
 
             document.getElementById("firstname").innerText = data.firstname;
@@ -35,5 +39,5 @@ function getUserInfoWithFetch() {
             alert('oh no :(');
             console.log(error);
         })
-}
 
+};

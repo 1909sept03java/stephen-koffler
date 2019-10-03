@@ -28,9 +28,10 @@ public class AuthenticationService {
 				rs = pstmt.executeQuery();
 				if(rs.next()) {
 					int userId = rs.getInt("USERID");
-					String fname = rs.getString("FNAME");
+					String fname = rs.getString("FNAME");		
 					String lname = rs.getString("LNAME");
-					u = new User(userId, fname, lname);
+					int isManager = rs.getInt("ISMGR");
+					u = new User(userId, fname, lname, isManager);
 				}
 			}
 			

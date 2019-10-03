@@ -29,7 +29,8 @@ public class SessionServlet extends HttpServlet {
 			int userId = Integer.parseInt(session.getAttribute("userId").toString());
 			String firstname = session.getAttribute("firstname").toString();
 			String lastname = session.getAttribute("lastname").toString();
-			User u = new User(userId, firstname, lastname);
+			int isManager = Integer.parseInt(session.getAttribute("isManager").toString());
+			User u = new User(userId, firstname, lastname, isManager);
 			// use ObjectMapper (part of the Jackson api) to convert Java object to JSON
 			// representation
 			resp.getWriter().write((new ObjectMapper()).writeValueAsString(u));

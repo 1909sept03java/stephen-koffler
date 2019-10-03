@@ -7,8 +7,8 @@ public class Reimb_Req {
 	private int userId;
 	private String description;
 	private double dollar_amt;
-	private Date openDate;
-	private Date approvedDate;
+	private String openDate;
+	private String approvedDate;
 	private int status;
 
 
@@ -17,7 +17,7 @@ public class Reimb_Req {
 	}
 
 
-	public Reimb_Req(int reimb_id, int userId, String description, double dollar_amt, Date openDate, Date approvedDate,
+	public Reimb_Req(int reimb_id, int userId, String description, double dollar_amt, String openDate, String approvedDate,
 			int status) {
 		super();
 		this.reimb_id = reimb_id;
@@ -70,22 +70,22 @@ public class Reimb_Req {
 	}
 
 
-	public Date getOpenDate() {
+	public String getOpenDate() {
 		return openDate;
 	}
 
 
-	public void setOpenDate(Date openDate) {
+	public void setOpenDate(String openDate) {
 		this.openDate = openDate;
 	}
 
 
-	public Date getApprovedDate() {
+	public String getApprovedDate() {
 		return approvedDate;
 	}
 
 
-	public void setApprovedDate(Date approvedDate) {
+	public void setApprovedDate(String approvedDate) {
 		this.approvedDate = approvedDate;
 	}
 

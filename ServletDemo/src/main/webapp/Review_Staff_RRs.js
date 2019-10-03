@@ -20,7 +20,6 @@ window.onload = function () {
             // utilize unwrapped promise as a JS object
             .then((data) => {
 
-
                 for (var i = 0; i < data.length; i++) {
                     //var holder = "";
                     console.log(data[i]);
@@ -56,6 +55,19 @@ window.onload = function () {
                     status_cell.innerText = data[i].status;
                     row.appendChild(status_cell);
 
+                    //is this how to append a field at the end for approval?
+
+                    // var status_cell = document.createElement("div");
+                    // status_cell.className = "cell";
+                    // status_cell.innerText = data[i].status;
+                    // row.appendChild(status_cell);
+
+
+                    // holder = holder + data[i].openDate
+                    // holder = holder + data[i].description;
+                    // holder = holder + data[i].dollar_amt;
+                    // holder = holder + data[i].status;
+                    // holder = holder + data[i].approvedDate;
 
                     document.getElementById("RRs").appendChild(row);
 
@@ -70,5 +82,4 @@ window.onload = function () {
             });
 
     }
-
 };

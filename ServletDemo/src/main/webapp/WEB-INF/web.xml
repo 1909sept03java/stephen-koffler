@@ -55,4 +55,12 @@
   	<servlet-name>View_RR_StatusServlet</servlet-name>
   	<url-pattern>/view_RRs</url-pattern>
   </servlet-mapping>
+  <servlet>
+  	<servlet-name>Review_Staff_RRServlet</servlet-name>
+  	<servlet-class>com.revature.servlet.Reiew_RRServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Review_Staff_RRServlet</servlet-name>
+  	<url-pattern>/Review_Staff_RRs</url-pattern>
+  </servlet-mapping>
   </web-app>

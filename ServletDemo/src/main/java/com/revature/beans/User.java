@@ -1,19 +1,25 @@
 package com.revature.beans;
 
 public class User {
+	private int id;
+	private String firstname;
+	private String lastname;
+	private int isManager;
+	
+	
+	
 	
 	public User() {
 		super();
 	}
-	public User(int id, String firstname, String lastname) {
+	public User(int id, String firstname, String lastname, int isManager) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
 		this.lastname = lastname;
+		this.isManager = isManager;
 	}
-	private int id;
-	private String firstname;
-	private String lastname;
+	
 	public int getId() {
 		return id;
 	}
@@ -31,6 +37,12 @@ public class User {
 	}
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
+	}
+	public int getIsManager() {
+		return isManager;
+	}
+	public void setIsManager(int isManager) {
+		this.isManager = isManager;
 	}
 	@Override
 	public int hashCode() {

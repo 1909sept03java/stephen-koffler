@@ -30,9 +30,47 @@ public class View_RR_StatusService{
 				int reimb_id  = rs.getInt("REIMB_ID");
 				int dollarAmt = rs.getInt("DOLLAR_AMT");
 				String description = rs.getString("DESCRIP");
-				Date openDate = rs.getDate("OPEN_DATE");
-				Date approvedDate = rs.getDate("APPROVE_DATE");
+				String openDate = rs.getDate("OPEN_DATE").toString();
+				String approvedDate = null;
+				if (rs.getDate("APPROVE_DATE") != null)
+					approvedDate = rs.getDate("APPROVE_DATE").toString();
 				int status = rs.getInt("APPROVAL_STATUS");
+				System.out.println(openDate);
+						
+		//I don't see where this method is being called. The servlet class just has a redirect.
+		//did it get corrupted? my back up in github has a vr object calling the method. but view_rr from 
+		//the employee homepage works with just the redirect.
+				
+				
+				rrs.add(new Reimb_Req(reimb_id, userId, description, dollarAmt, openDate, approvedDate, status));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		return rrs;
+	}
+public List<Reimb_Req> checkStaffStatus(int userId, int ismgr){// where are these values coming from and where should this method be called?
+		
+		List<Reimb_Req> rrs = new ArrayList<>();
+		// try-with-resources.. con will be closed at the end of the block
+		try (Connection con = ConnectionUtil.getConnection()) {
+			
+			String sql = "SELECT * FROM REIMB_REQ WHERE MGRID = ? AND ISMGR = ? ORDER BY REIMB_ID";
+			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setInt(1, userId);
+			stmt.setInt(2, ismgr);
+			ResultSet rs = stmt.executeQuery();
+			
+			while(rs.next()) {
+				int reimb_id  = rs.getInt("REIMB_ID");
+				int dollarAmt = rs.getInt("DOLLAR_AMT");
+				String description = rs.getString("DESCRIP");
+				String openDate = rs.getDate("OPEN_DATE").toString();
+				String approvedDate = null;
+				if (rs.getDate("APPROVE_DATE") != null)
+					approvedDate = rs.getDate("APPROVE_DATE").toString();
+				int status = rs.getInt("APPROVAL_STATUS");
+				System.out.println(openDate);
 						
 				
 				
@@ -44,5 +82,6 @@ public class View_RR_StatusService{
 		} 
 		return rrs;
 	}
-
 }
+//SELECT REIMB_REQ.REIMB_ID, REIMB_REQ.DESCRIP, REIMB_REQ.DOLLAR_AMT, REIMB_REQ.OPEN_DATE, REIMB_REQ.APPROVE_DATE,\r\n" + 
+//"REIMB_REQ.APPROVAL_STATUS, EMPLOYEE.LNAME FROM REIMB_REQ INNER JOIN EMPLOYEE ON REIMB_REQ.USERID = EMPLOYEE.USERID;\r\n
