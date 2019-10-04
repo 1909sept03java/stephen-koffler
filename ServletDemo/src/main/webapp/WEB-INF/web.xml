@@ -56,11 +56,27 @@
   	<url-pattern>/view_RRs</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>Review_Staff_RRServlet</servlet-name>
-  	<servlet-class>com.revature.servlet.Reiew_RRServlet</servlet-class>
+  	<servlet-name>Review_Staff_RR_StatusServlet</servlet-name>
+  	<servlet-class>com.revature.servlet.Review_Staff_RR_StatusServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>Review_Staff_RRServlet</servlet-name>
+  	<servlet-name>Review_Staff_RR_StatusServlet</servlet-name>
   	<url-pattern>/Review_Staff_RRs</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>Get_StaffRRServlet</servlet-name>
+  	<servlet-class>com.revature.servlet.Get_StaffRRServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Get_StaffRRServlet</servlet-name>
+  	<url-pattern>/getStaff_RRs</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>Approve_RRServlet</servlet-name>
+  	<servlet-class>com.revature.servlet.Approve_RRServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>Approve_RRServlet</servlet-name>
+  	<url-pattern>/approve_RRs</url-pattern>
   </servlet-mapping>
   </web-app>

@@ -4,7 +4,7 @@ window.onload = function () {
 
     let ul = document.getElementById('RRs');
 
-    let url = 'http://localhost:8082/ServletDemo/get_RRs';
+    let url = 'http://localhost:8082/ServletDemo/getStaff_RRs'; //can be anything we make up
 
     getRRlist();
 
@@ -54,6 +54,18 @@ window.onload = function () {
                     status_cell.className = "cell";
                     status_cell.innerText = data[i].status;
                     row.appendChild(status_cell);
+
+                    var approve_cell = document.createElement("div");
+                    approve_cell.className = "cell";
+                    var qs = "reimb_id=" + data[i].reimb_id + "&status=1";
+                    approve_cell.innerHTML = "<a href='approve_RRs?" + qs + "'>APPROVE</a>";
+                    row.appendChild(approve_cell);
+
+                    var deny_cell = document.createElement("div");
+                    deny_cell.className = "cell";
+                    qs = "reimb_id=" + data[i].reimb_id + "&status=2";
+                    deny_cell.innerHTML = "<a href='approve_RRs?" + qs + "'>DENY</a>";
+                    row.appendChild(deny_cell);
 
                     //is this how to append a field at the end for approval?
 

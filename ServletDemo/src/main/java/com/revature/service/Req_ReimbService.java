@@ -37,5 +37,23 @@ public class Req_ReimbService{
 		
 		return true;
 	}
-
+public void updateStatus(int reimb_id, int status)  {
+		
+		
+		try {
+			Connection con = ConnectionUtil.getConnection();
+			String sql = "UPDATE REIMB_REQ SET APPROVAL_STATUS = ?, APPROVE_DATE = SYSDATE WHERE REIMB_ID = ?";
+			PreparedStatement pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1,status);
+			pstmt.setInt(2, reimb_id);
+			pstmt.execute();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
 }

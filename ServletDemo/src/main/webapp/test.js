@@ -22,7 +22,7 @@ window.onload = function () {
             if (data.isManager == 1) {
                 document.getElementById("mgrstatus").innerText = "Manager's HomePage";
                 var li = document.createElement("li");
-                li.innerHTML = <a href='Review_Staff_RRs'>Review, Approve, or Deny Expense Reports of your Staff    </a>
+                li.innerHTML = "<a href='Review_Staff_RRs'>Review, Approve, or Deny Expense Reports of your Staff    </a>"
                 document.getElementById("viewstatus").append(li);
             }
             else

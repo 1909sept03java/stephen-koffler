@@ -49,16 +49,17 @@ public class View_RR_StatusService{
 		} 
 		return rrs;
 	}
-public List<Reimb_Req> checkStaffStatus(int userId, int ismgr){// where are these values coming from and where should this method be called?
+public List<Reimb_Req> checkStaffStatus(int userId){
 		
 		List<Reimb_Req> rrs = new ArrayList<>();
 		// try-with-resources.. con will be closed at the end of the block
 		try (Connection con = ConnectionUtil.getConnection()) {
 			
-			String sql = "SELECT * FROM REIMB_REQ WHERE MGRID = ? AND ISMGR = ? ORDER BY REIMB_ID";
+			String sql = "SELECT REIMB_REQ.REIMB_ID, REIMB_REQ.DESCRIP, REIMB_REQ.DOLLAR_AMT, REIMB_REQ.OPEN_DATE, REIMB_REQ.APPROVE_DATE, " + 
+					"REIMB_REQ.APPROVAL_STATUS, EMPLOYEE.LNAME, EMPLOYEE.MGRID FROM REIMB_REQ INNER JOIN EMPLOYEE ON REIMB_REQ.USERID = EMPLOYEE.USERID " + 
+					"WHERE MGRID = ? AND APPROVAL_STATUS IS NULL";
 			PreparedStatement stmt = con.prepareStatement(sql);
 			stmt.setInt(1, userId);
-			stmt.setInt(2, ismgr);
 			ResultSet rs = stmt.executeQuery();
 			
 			while(rs.next()) {
@@ -83,5 +84,4 @@ public List<Reimb_Req> checkStaffStatus(int userId, int ismgr){// where are thes
 		return rrs;
 	}
 }
-//SELECT REIMB_REQ.REIMB_ID, REIMB_REQ.DESCRIP, REIMB_REQ.DOLLAR_AMT, REIMB_REQ.OPEN_DATE, REIMB_REQ.APPROVE_DATE,\r\n" + 
-//"REIMB_REQ.APPROVAL_STATUS, EMPLOYEE.LNAME FROM REIMB_REQ INNER JOIN EMPLOYEE ON REIMB_REQ.USERID = EMPLOYEE.USERID;\r\n
+
