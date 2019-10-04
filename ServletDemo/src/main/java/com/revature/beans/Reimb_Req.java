@@ -6,7 +6,7 @@ public class Reimb_Req {
 	private int reimb_id;
 	private int userId;
 	private String description;
-	private double dollar_amt;
+	private int dollar_amt;
 	private String openDate;
 	private String approvedDate;
 	private int status;
@@ -17,7 +17,7 @@ public class Reimb_Req {
 	}
 
 
-	public Reimb_Req(int reimb_id, int userId, String description, double dollar_amt, String openDate, String approvedDate,
+	public Reimb_Req(int reimb_id, int userId, String description, int dollar_amt, String openDate, String approvedDate,
 			int status) {
 		super();
 		this.reimb_id = reimb_id;
@@ -60,12 +60,12 @@ public class Reimb_Req {
 	}
 
 
-	public double getDollar_amt() {
+	public int getDollar_amt() {
 		return dollar_amt;
 	}
 
 
-	public void setDollar_amt(double dollar_amt) {
+	public void setDollar_amt(int dollar_amt) {
 		this.dollar_amt = dollar_amt;
 	}
 
@@ -101,9 +101,3 @@ public class Reimb_Req {
 
 
 }
-
-
-	
-
-
-	
