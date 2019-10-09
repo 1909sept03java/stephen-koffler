@@ -10,9 +10,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "LIBRARYMEMBER")
 public class User {
+	
+	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO, generator="userIdSequence")
 	@SequenceGenerator(allocationSize=1, name="userIdSequence", sequenceName="SQ_USERID_PK")
-	@Column(name="FLASHCARD_ID")
+	@Column(name="USER_ID")
 	private int userId;
 	private String fullName;
 	private String passWord;
@@ -44,7 +46,6 @@ public class User {
 		this.passWord = passWord;
 	}
 
-	@Id
 	public int getUserId() {
 		return userId;
 	}
