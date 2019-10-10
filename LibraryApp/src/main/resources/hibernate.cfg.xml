@@ -16,7 +16,7 @@
 		<!-- defaults to update -->
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<!-- where are the mapped beans? -->
-		<mapping class="com.revature.beans.User"></mapping>
+		<mapping class="com.revature.beans.LibraryUser"></mapping>
 		
 	</session-factory>
 </hibernate-configuration>

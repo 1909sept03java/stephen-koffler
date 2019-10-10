@@ -14,9 +14,9 @@ public class ConnectionUtil {
 			// read in connection details from system environment
 			// can also use a properties file like we have before
 			// or hardcode (don't, but it's possible)
-			c.setProperty("hibernate.connection.username", System.getenv("DEMO_DB_USERNAME"));
-			c.setProperty("hibernate.connection.password", System.getenv("DEMO_DB_PASSWORD"));
-			c.setProperty("hibernate.connection.url", System.getenv("DEMO_DB_URL"));
+			c.setProperty("hibernate.connection.username", "project2");
+			c.setProperty("hibernate.connection.password", "CZMASKZC");
+			c.setProperty("hibernate.connection.url", "jdbc:oracle:thin:@cdb.cnvcpuuo6moo.us-east-1.rds.amazonaws.com:1521:orcl");
 			c.configure(); // looks for src/main/resources/hibernate.cfg.xml for other properties
 			sessionFactory = c.buildSessionFactory();
 		}
