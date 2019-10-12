@@ -6,12 +6,9 @@ import java.util.List;
 
 
 public interface LibraryUserDAO {
-	//public User login(String userName, String passWord);
-	public LibraryUser getById(int id);
-	public List<LibraryUser> getAll();
-	public boolean addUser(LibraryUser user);
+	
+	public LibraryUser addUser(String username, String password, String firstname, String lastname, String email);
 	public boolean updateUser(LibraryUser user);
-	public boolean deleteUser(LibraryUser user);
 	public LibraryUser login(String username, String password);
 
 }

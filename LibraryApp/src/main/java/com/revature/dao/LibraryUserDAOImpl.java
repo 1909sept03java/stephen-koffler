@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Criteria;
-import org.hibernate.Query;
+import org.hibernate.query.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -38,51 +38,41 @@ public class LibraryUserDAOImpl implements LibraryUserDAO {
 		return u;
 	}
 
-//	public User getById(int id) {
-//		User u = null;
-//		try (Session s = sf.openSession()) {
-//			u = s.get(User.class, id);
-//		}
-//		if(u != null)
-//			return u;
-//		else
-//		return null;
-//		
-//	}
-
-		@Override
-	public LibraryUser getById(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
-	public boolean addUser(LibraryUser user) {
-		// TODO Auto-generated method stub
-		return false;
+	public LibraryUser addUser(String username, String password, String firstname, String lastname, String email) {
+		Session session = sf.openSession();
+		
+		LibraryUser user = new LibraryUser();
+		user.setUsername(username);
+		user.setPassword(password);
+		user.setFirstname(firstname);
+		user.setLastname(lastname);
+		user.setEmail(email);
+		
+		
+		Transaction tx = session.beginTransaction();
+		session.save(user);
+		tx.commit();
+		session.close();
+	
+		return user;
 	}
 
 	@Override
 	public boolean updateUser(LibraryUser user) {
-		// TODO Auto-generated method stub
-		return false;
+		 	Session session = sf.openSession();
+	        Transaction tx = session.beginTransaction();
+	        String q = "Update LibraryUser Set username =: username, password =: password where id =: id";
+	        Query query = session.createQuery(q);
+	        query.setParameter("username", user.getUsername());
+	        query.setParameter("password", user.getPassword());
+	        query.setParameter("userid", user.getId());
+	        query.executeUpdate();
+	        session.update(user); // do we need this?
+	        tx.commit();
+	        return true;
+		
 	}
-
-	@Override
-	public boolean deleteUser(LibraryUser user) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public List<LibraryUser> getAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-
-	
-	
 
 }

@@ -1,13 +1,16 @@
 package com.revature.service;
-import com.revature.beans.*;
+
 import static org.junit.Assert.*;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class AuthenticationServiceTest2 {
+import com.revature.beans.Credentials;
+import com.revature.beans.Employee;
 
+public class AuthenticationServiceTest3 {
+	AuthenticationService es = new AuthenticationService();
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -18,12 +21,13 @@ public class AuthenticationServiceTest2 {
 
 	@Test
 	public void test() {
-		Credentials creds = new Credentials("jcaesar","p4ss");
+		
         Credentials creds = new Credentials();
-        creds.setUsername("jcaesar");
-        creds.setPassword("p4ss");
-        Employee emp = new Employee(1, "Julius", "Caesar", 2, 0);
-        assertEquals(emp, authServ.authenticateUser(creds));
+        creds.setUsername("ssmith");
+        creds.setPassword("irule");
+        
+        Employee emp = new Employee(4000, "Sarah", "Smith", null, null,"irule", 3000, 1);
+        assertEquals(emp, es.authenticateUser(creds));
 		fail("Not yet implemented");
 	}
 
