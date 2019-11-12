@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.revature.beans.Credentials;
 import com.revature.beans.Employee;
+import com.revature.beans.User;
 
 public class AuthenticationServiceTest3 {
 	AuthenticationService es = new AuthenticationService();
@@ -20,15 +21,15 @@ public class AuthenticationServiceTest3 {
 	}
 
 	@Test
-	public void test() {
+	public void testAuthenticateUser() {
 		
         Credentials creds = new Credentials();
         creds.setUsername("ssmith");
         creds.setPassword("irule");
         
-        Employee emp = new Employee(4000, "Sarah", "Smith", null, null,"irule", 3000, 1);
-        assertEquals(emp, es.authenticateUser(creds));
-		fail("Not yet implemented");
+        User usr = new User(4000, "Sarah", "Smith",  1);
+        assertEquals(usr, es.authenticateUser(creds));
+		
 	}
 
 }

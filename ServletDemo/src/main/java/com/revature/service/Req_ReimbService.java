@@ -11,6 +11,11 @@ import com.revature.util.ConnectionUtil;
 
 public class Req_ReimbService{
 	
+	public int mult2Nums(int a, int b) {
+		return a*b;
+			
+	}
+	
 	
 	public boolean insertReq(int userId, String description, int amount)  {
 		
@@ -52,6 +57,7 @@ public void updateStatus(int reimb_id, int status)  {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		
 		
 		

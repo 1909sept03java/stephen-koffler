@@ -1,0 +1,47 @@
+body { 
+        height:100vh;
+        background-image: url("../image.png");
+        background-position: center;
+        background-repeat:no-repeat;
+        background-size: contain;
+}
+
+.wrap{
+    text-align:center;
+   
+  }
+
+  .display{
+      text-align:center;
+      display: inline-block;
+       background-color:#add8e6;
+    Width:35%;
+  }
+.title{
+    font-size:69pt;
+}
+  /* Full-width inputs */
+  input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+      background-color:#d6ebf2
+  }
+  
+  /* Set a style for all buttons */
+  .button {
+    background-color: #5B9E41;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+  }
+  .button:hover {
+    opacity: 0.8;
+  }
+  
