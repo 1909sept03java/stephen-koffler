@@ -1,0 +1,3 @@
+INSERT INTO STUDENT VALUES(100, 'Stephen', 'Koffler');
+INSERT INTO STUDENT VALUES(200, 'Mohammad', 'Ahmar');
+INSERT INTO STUDENT VALUES(300, 'Zifeng', 'Chen');
