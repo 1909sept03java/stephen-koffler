@@ -1,1 +1,18 @@
 <p>student-list works!</p>
+<h2>Student List</h2>
+<a [routerLink]="['/full']"> Full</a>
+<p *ngIf="loading">Loading</p>
+<ul>
+  <li *ngFor="let student of students">
+    {{ student.lname }} - {{ student.fname }}
+  </li>
+</ul>
+<form>
+  <label>First Name</label>
+  <input type="text" name="fname" [(ngModel)]="newStudent.fname" />
+  <label>Last Name</label>
+  <input type="text" name="lname" [(ngModel)]="newStudent.lname" />
+  <label>id</label>
+  <input type="number" name="id" [(ngModel)]="newStudent.id" />
+  <button (click)="submit()">Submit</button>
+</form>

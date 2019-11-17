@@ -3,23 +3,23 @@ import { StudentService } from "../student.service";
 import { IStudent } from "../student";
 
 @Component({
-  selector: "student-list",
-  templateUrl: "./student-list.component.html",
+  selector: "student-full-list",
+  template: `
+    <h2>Student Full List</h2>
+    <a [routerLink]="['/']"> Home</a>
+    <p *ngIf="loading">Loading</p>
+    <ul>
+      <li *ngFor="let student of students">
+        {{ student.id }} - {{ student.lname }}, {{ student.fname }}
+      </li>
+    </ul>
+  `,
   styles: []
 })
-export class StudentListComponent implements OnInit {
+export class StudentFullListComponent implements OnInit {
   public students: Array<IStudent> = [];
-  loading = false;
-  newStudent: IStudent = { id: 50, fname: "joe", lname: "mama" };
-
+  loading = false; /*this is just to show a message if the data takes a while to display*/
   constructor(private _studentService: StudentService) {}
-
-  submit() {
-    console.log(this.newStudent);
-    this._studentService.addStudent(this.newStudent).subscribe(() => {
-      this.students.push(this.newStudent);
-    });
-  }
 
   ngOnInit() {
     this.loading = true;
