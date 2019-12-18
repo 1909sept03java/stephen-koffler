@@ -17,6 +17,7 @@ export class StudentService {
   constructor(private http: HttpClient) {}
 
   getStudents(): Observable<IStudent[]> {
+    //return type is not mandatory. you can have no return type and in ts file use(data:any) as the argument to .subscribe
     console.log(this._url);
     return this.http.get(this._url) as Observable<IStudent[]>;
   }

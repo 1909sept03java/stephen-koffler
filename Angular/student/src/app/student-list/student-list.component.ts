@@ -23,7 +23,7 @@ export class StudentListComponent implements OnInit {
 
   ngOnInit() {
     this.loading = true;
-    this._studentService.getStudents().subscribe((data: any) => {
+    this._studentService.getStudents().subscribe(data => {
       this.loading = false;
       this.students = data;
     });
