@@ -19,7 +19,7 @@ import com.revature.week6.service.StudentService;
 
 @CrossOrigin
 @RestController
-@RequestMapping(value = "/student")
+@RequestMapping (value = "/student")
 public class StudentController {
 	
 

@@ -1,9 +1,12 @@
 package com.sat.math.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table
+@Table(name = "MathProblem")
 public class MathProblem {
 	@Id
 	@Column
@@ -21,11 +24,11 @@ public class MathProblem {
 	@Column
 	String ansChoiceE;
 	@Column
-	char corrrectAns;
+	String corrrectAns;
 	
 	
 	public MathProblem(int problemId, String problemStatment, String ansChoiceA, String ansChoiceB, String ansChoiceC,
-			String ansChoiceD, String ansChoiceE, char corrrectAns) {
+			String ansChoiceD, String ansChoiceE, String corrrectAns) {
 		super();
 		this.problemId = problemId;
 		this.problemStatment = problemStatment;
@@ -108,12 +111,12 @@ public class MathProblem {
 	}
 
 
-	public char getCorrrectAns() {
+	public String getCorrrectAns() {
 		return corrrectAns;
 	}
 
 
-	public void setCorrrectAns(char corrrectAns) {
+	public void setCorrrectAns(String corrrectAns) {
 		this.corrrectAns = corrrectAns;
 	}
 	

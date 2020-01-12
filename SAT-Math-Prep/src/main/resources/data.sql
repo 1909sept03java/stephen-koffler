@@ -1,3 +1,1 @@
-INSERT INTO MATHPROBLEM VALUES(100, '2x = 9', 'x = 4', 'x = 6' 'x = 4.5', 'x = 5', 'x = 2', 'c');
-INSERT INTO MATHPROBLEM VALUES(200, '3x = 9', 'x = 4', 'x = 3' 'x = 9', 'x = 5', 'x = 0', 'b');
-INSERT INTO MATHPROBLEM VALUES(300, '2x = 20', 'x = 5', 'x = 7' 'x = 4.5', 'x = 5', 'x = 10', 'e');
+INSERT INTO math_problem VALUES (2, '3x = 9', 'Answer 2', 'Answer 3', 'Answer 4', 'Answer 5', '3', 'What is the correct answer?');

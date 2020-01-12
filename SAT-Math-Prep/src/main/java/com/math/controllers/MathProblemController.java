@@ -8,14 +8,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import com.math.service.MathProblemService;
 import com.sat.math.model.MathProblem;
-
+@CrossOrigin
 @RestController
-@ResponseBody
+@RequestMapping (value = "/mathproblem")
 public class MathProblemController {
-	MathProblemService mathProblemService;
+	private MathProblemService mathProblemService;
+	
+	public MathProblemController(MathProblemService mathProblemService) {
+		this.mathProblemService = mathProblemService;
+	}
 	
 	@RequestMapping(value = "/all", method = RequestMethod.GET)
     public ResponseEntity<List<MathProblem>> getAll() {
